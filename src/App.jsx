@@ -80,7 +80,6 @@ const App = () => {
     setTurn(true);
     setErrorMsg(null);
     setGrid(Array(9).fill(""));
-    document.querySelectorAll("input").forEach((i) => (i.value = ""));
   };
 
   // console.log("grid: ", grid);
