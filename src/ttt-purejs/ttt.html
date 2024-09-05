@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../index.css" />
+    <title>TTT Html</title>
+  </head>
+  <body class="" style="display: flex; flex-direction: column">
+    <button onclick="resetGame()">reset</button>
+    <div class="game">
+      <input type="text" class="input-box block" name="" readonly id="1" />
+      <input type="text" class="input-box block" name="" readonly id="2" />
+      <input type="text" class="input-box block" name="" readonly id="3" />
+      <input type="text" class="input-box block" name="" readonly id="4" />
+      <input type="text" class="input-box block" name="" readonly id="5" />
+      <input type="text" class="input-box block" name="" readonly id="6" />
+      <input type="text" class="input-box block" name="" readonly id="7" />
+      <input type="text" class="input-box block" name="" readonly id="8" />
+      <input type="text" class="input-box block" name="" readonly id="9" />
+    </div>
+    <div class="msg"></div>
+    <script>
+      const boxes = document.querySelectorAll("input");
+      const msg = document.querySelector(".msg");
+      let gameCompleted = false;
+      //   patterns
+      // 1 2 3 , 456 , 789 , 147 ,258,369,753,159
+      const patterns = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [1, 4, 7],
+        [2, 5, 8],
+        [3, 6, 9],
+        [1, 5, 9],
+        [3, 5, 7],
+      ];
+
+      let turn = "x";
+      let result = [];
+      let cellsFilled = [];
+
+      boxes.forEach((box) => {
+        box.addEventListener("click", (e) => {
+          msg.innerHTML = ``;
+          // cell alredy has a value
+          if (e.target.value) {
+            console.log("cell is not empty");
+
+            msg.innerHTML = `Cannot place here, choose another cell`;
+            return;
+          }
+          // cell is empty
+          if (!e.target.value) {
+            e.target.value = turn;
+            // push x/o to result array
+            result[e.target.id - 1] = e.target.value;
+            box.classList.add("filled");
+            PatternCheck(turn);
+            // change turn
+            return turn == "x" ? (turn = "o") : (turn = "x");
+          }
+          // console.log("cellsFilled: ", cellsFilled);
+          // console.log("result: ", result);
+          // console.log("gameCompleted: ", gameCompleted);
+        });
+      });
+      function checkWinner(r, turn) {
+        if (r[0] && r[1] && r[2]) {
+          gameCompleted = true;
+          msg.innerHTML = `${turn} Won!!`;
+          document.querySelector(".game").classList.add("no-click");
+          return console.log(`${turn} won!!`);
+        }
+      }
+      function PatternCheck(turn) {
+        patterns.map((pattern, i) => {
+          // pattern arryay
+          const r = [];
+          console.log(pattern);
+          // cells filled array
+          cellsFilled = result.filter((x) => (x ? x : ""));
+          // check all cells filleed
+          if (cellsFilled.length > 8) {
+            // all cells filled game completed
+            gameCompleted = true;
+            document.querySelector(".game").classList.add("no-click");
+          }
+          // pushsing true for pattern
+          pattern.filter((p, index) => {
+            return result[p - 1] == turn ? r.push(true) : r.push(false);
+          });
+
+          console.log(r);
+          checkWinner(r, turn);
+        });
+      }
+
+      const resetGame = () => {
+        boxes.forEach((box) => {
+          gameCompleted = false;
+          result = [];
+          box.classList.remove("filled");
+          document.querySelector(".game").classList.remove("no-click");
+          // boxes.style.pointerEvents = "inherit";
+          box.value = "";
+        });
+      };
+    </script>
+  </body>
+</html>

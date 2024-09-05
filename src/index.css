@@ -1,0 +1,110 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
+.game {
+  display: grid;
+  grid-template-rows: 3fr;
+  gap: 3px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.game__over {
+  pointer-events: none;
+  opacity: 60%;
+}
+.reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 5px;
+  height: 10px;
+  width: 4rem;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+.title {
+  text-align: center;
+}
+.top-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.5rem;
+  font-size: 2rem;
+}
+.block {
+  outline: none;
+  border: none;
+  text-align: center;
+  border-radius: 1rem;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  padding: 1.5rem;
+  font-size: 2.6rem;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.filled {
+  opacity: 0.8;
+}
+.no-click {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 1.8rem;
+  text-align: center;
+  color: rgb(255, 115, 115);
+}
+.error {
+  color: red;
+}
+
+@media (min-width: 768px) {
+  body {
+    height: 100vh;
+    margin: auto;
+  }
+  .block {
+    width: 8rem;
+    height: 8rem;
+    padding: 0.1rem;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+}
+
+/* Styles for screens narrower than 480px */
+@media (min-width: 480px) and (max-width: 768px) {
+  .block {
+    width: 5rem;
+    height: 5rem;
+    padding: 3rem;
+    font-size: 4rem;
+  }
+}
