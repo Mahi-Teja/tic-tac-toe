@@ -1,4 +1,4 @@
-# Tic-Tac-Toe Game
+# Tic-Tac-Toe Game   [try it](https://mahi-teja.github.io/tic-tac-toe).
 
 A simple Tic-Tac-Toe game built with React. 
 The game allows two players to play against each other on the same device, alternating between the ❌ and 🇴 emojis (or X and O) to mark their turns.
@@ -19,4 +19,4 @@ The game allows two players to play against each other on the same device, alter
 5. If the board fills up without a winner, the game ends in a tie.
 6. Click the Reset button to start a new game.
 
-You can try out the Tic-Tac-Toe game live [here]("https://mahi-teja.github.io/tic-tac-toe").
+
