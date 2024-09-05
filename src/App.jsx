@@ -17,6 +17,8 @@ const App = () => {
   const [turn, setTurn] = useState(true);
   const [msg, setMsg] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [xPosition, setXPosition] = useState(Array(3).fill(""));
+  const [yPosition, setYPosition] = useState(Array(3).fill(""));
   const emoji = ["❌", "🇴"]; // emojis
   // const emoji = ["X", "O"]; // letters
 
@@ -95,7 +97,7 @@ const App = () => {
       </div>
       <div className={`game ${game ? "" : "no-click"}`}>
         {/* renderning boxes */}
-        {gameGrid.map((box, index) => (
+        {grid.map((box, index) => (
           <input
             className={`block ${grid[index] ? "filled" : ""} ${
               grid[index] == `${emoji[0] || "X"}` ? "red" : "green"
