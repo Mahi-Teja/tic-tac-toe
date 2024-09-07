@@ -92,7 +92,7 @@ const TicTacToss = () => {
   const handleClick = (e, i) => {
     setErrorMsg(null);
     // if cell is not empty
-    if (e.target.value) {
+    if (grid[i]) {
       setErrorMsg("invalid move!!");
       return;
     }

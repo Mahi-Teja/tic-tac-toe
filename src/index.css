@@ -221,14 +221,14 @@ button {
   }
 }
 /* Laptops and bigger */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   body {
     height: 100vh;
     margin: auto;
   }
   .block {
-    width: 7rem;
-    height: 7rem;
+    width: 5rem;
+    height: 5rem;
     padding: 2rem;
     font-size: 3rem;
     cursor: pointer;
